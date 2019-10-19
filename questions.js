@@ -1,7 +1,7 @@
 const QUESTIONS = [
     {
         //Question 1
-        text: 'Who did the Packers play in the first Super Bowl?',
+        question: 'Who did the Packers play in the first Super Bowl?',
         answers: [
             { text: 'Oakland', correct: false },
             { text: 'Patriots', correct: false },
@@ -12,7 +12,7 @@ const QUESTIONS = [
 
     {
         //Question 2
-        text: 'Who is the current Quarterback?',
+        question: 'Who is the current Quarterback?',
         answer: [
             {text: 'Mason Crosby', correct: false},
             {text: 'Brett Favre', correct: false},
@@ -22,7 +22,7 @@ const QUESTIONS = [
     },
     {
         //Question 3
-        text: 'How many championships have the Green Bay Packers won?',
+        question: 'How many championships have the Green Bay Packers won?',
         answer: [
             {text: '10', correct: false},
             {text: '6', correct: false},
@@ -32,7 +32,7 @@ const QUESTIONS = [
     },
     {
         //Question 4
-        text: 'What team did they beat in their last Super Bowl appearance?',
+        question: 'What team did they beat in their last Super Bowl appearance?',
         answer: [
             {text: 'Pittsburgh', correct: true},
             {text: 'New England', correct: false,},
@@ -42,7 +42,7 @@ const QUESTIONS = [
     },
     {
         //Question 5
-        text: 'What year was Lambeau Field built?',
+        question: 'What year was Lambeau Field built?',
         answer: [
             {text: '1950', correct: false},
             {text: '1957', correct: true},
@@ -52,7 +52,7 @@ const QUESTIONS = [
     },
     {
         //Question 6
-        text: 'Since what year have season tickets been sold out?',
+        question: 'Since what year have season tickets been sold out?',
         answer: [
             {text: '2010', correct: false},
             {text: '1998', correct: false},
@@ -62,7 +62,7 @@ const QUESTIONS = [
     },
     {
         //Question 7
-        text: 'Who was the Packers first head coach?',
+        question: 'Who was the Packers first head coach?',
         answer: [
             {text: 'Bart Star', correct: false},
             {text: 'Curly Lambeau', correct: true},
@@ -70,3 +70,5 @@ const QUESTIONS = [
             {text: 'Vince Lombardi', correct: false}
         ]
     }];
+   
+   
