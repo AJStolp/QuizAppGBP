@@ -2,7 +2,7 @@ const QUESTIONS = [
     {
         //Question 1
         question: 'Who did the Packers play in the first Super Bowl?',
-        answers: [
+        choices: [
             { text: 'Oakland'},
             { text: 'Patriots'},
             { text: 'Kanas City'},
@@ -14,7 +14,7 @@ const QUESTIONS = [
     {
         //Question 2
         question: 'Who is the current Quarterback?',
-        answer: [
+        choices: [
             {text: 'Mason Crosby'},
             {text: 'Brett Favre'},
             {text: 'Aaron Rodgers'},
@@ -25,7 +25,7 @@ const QUESTIONS = [
     {
         //Question 3
         question: 'How many championships have the Green Bay Packers won?',
-        answer: [
+        choices: [
             {text: '10'},
             {text: '6'},
             {text: '8',},
@@ -36,7 +36,7 @@ const QUESTIONS = [
     {
         //Question 4
         question: 'What team did they beat in their last Super Bowl appearance?',
-        answer: [
+        choices: [
             {text: 'Pittsburgh'},
             {text: 'New England'},
             {text: 'Seattle'},
@@ -47,7 +47,7 @@ const QUESTIONS = [
     {
         //Question 5
         question: 'What year was Lambeau Field built?',
-        answer: [
+        choices: [
             {text: '1950'},
             {text: '1957'},
             {text: '1960'},
@@ -58,7 +58,7 @@ const QUESTIONS = [
     {
         //Question 6
         question: 'Since what year have season tickets been sold out?',
-        answer: [
+        choices: [
             {text: '2010'},
             {text: '1998'},
             {text: '1989'},
@@ -69,7 +69,7 @@ const QUESTIONS = [
     {
         //Question 7
         question: 'Who was the Packers first head coach?',
-        answer: [
+        choices: [
             {text: 'Bart Star'},
             {text: 'Curly Lambeau'},
             {text: 'matt Lefleur'},
@@ -85,9 +85,10 @@ const QUESTIONS = [
         //this function will listen for a click on the start button
         //then it will take users to the first question
     }
-    function updateQuestion(QUESTIONS) {
-        let question = [];
-        for(let i = 0; i < QUESTIONS.length; i++){
+    function updateQuestionScore(QUESTIONS) {
+        let score = 0;
+        let question = QUESTIONS[0];
+        for(let i = 0; i < question.length; i++){
             
         }
         //this function updates the updates questions after the next button is clicked
