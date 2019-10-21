@@ -2,79 +2,79 @@ const QUESTIONS = [
     {
         //Question 1
         question: 'Who did the Packers play in the first Super Bowl?',
-        choices: [
-            'Oakland',
-            'Patriots',
-            'Kanas City',
-            'Da Bears'
-        ],
+        
+            'choice1': 'Oakland',
+            'choice2': 'Patriots',
+            'choice3': 'Kanas City',
+            'choice4': 'Da Bears',
+    
         correctAnswer: 'Kanas City'
     },
 
     {
         //Question 2
         question: 'Who is the current Quarterback?',
-        choices: [
-            'Mason Crosby',
-            'Brett Favre',
-            'Aaron Rodgers',
-            'Mike Daniels',
-        ],
+    
+        'choice1': 'Mason Crosby',
+        'choice2': 'Brett Favre',
+        'choice3': 'Aaron Rodgers',
+        'choice4': 'Mike Daniels',
+        
         correctAnswer: 'Aaron Rodgers'
     },
     {
         //Question 3
         question: 'How many championships have the Green Bay Packers won?',
-        choices: [
-            '10',
-            '6',
-            '8',
-            '13'
-        ],
+        
+            'choice1': '10',
+            'choice1': '6',
+            'choice1': '8',
+            'choice1': '13',
+    
         correctAnswer: '13'
     },
     {
         //Question 4
         question: 'What team did they beat in their last Super Bowl appearance?',
-        choices: [
-            'Pittsburgh',
-            'New England',
-            'Seattle',
-            'kanas City'
-        ],
+        
+        'choice1': 'Pittsburgh',
+        'choice2': 'New England',
+        'choice3': 'Seattle',
+        'choice4': 'kanas City',
+        
         correctAnswer: 'Pittsburgh'
     },
     {
         //Question 5
         question: 'What year was Lambeau Field built?',
-        choices: [
-            '1950',
-            '1957',
-            '1960',
-            '2000'
-        ],
+        
+        'choice1': '1950',
+        'choice2': '1957',
+        'choice3': '1960',
+        'choice4': '2000',
+        
         correctAnswer: '1957'
     },
     {
         //Question 6
         question: 'Since what year have season tickets been sold out?',
-        choices: [
-            '2010',
-            '1998',
-            '1989',
-            '1960'
-        ],
+        
+        'choice1': '2010',
+        'choice2': '1998',
+        'choice3': '1989',
+        'choice4': '1960',
+        
         correctAnswer: '1960'
     },
     {
         //Question 7
         question: 'Who was the Packers first head coach?',
-        choices: [
-            'Bart Star',
-            'Curly Lambeau',
-            'matt Lefleur',
-            'Vince Lombardi'
-        ],
+        
+        'choice1': 'Bart Star',
+        'choice2': 'Curly Lambeau',
+        'choice3': 'matt Lefleur',
+        'choice4': 'Vince Lombardi',
+        
         correctAnswer: 'Curly Lambeau'
     }];
         //Start of js function for Quiz App-------------------------------------------------------------------------
@@ -94,9 +94,8 @@ const QUESTIONS = [
         //then it will take users to the first question
     }
     function updateQuestion() {
-        QUESTIONS.forEach(question => {
-            $('.jsList').append(`${question.question}  ${question.choices}`);
-        })
+       
+        
     }      
     
 
