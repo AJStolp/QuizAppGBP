@@ -40,7 +40,7 @@ const QUESTIONS = [
         'choice1': 'Pittsburgh',
         'choice2': 'New England',
         'choice3': 'Seattle',
-        'choice4': 'kanas City',
+        'choice4': 'Kanas City',
         
         correctAnswer: 'Pittsburgh'
     },
@@ -72,24 +72,24 @@ const QUESTIONS = [
         
         'choice1': 'Bart Star',
         'choice2': 'Curly Lambeau',
-        'choice3': 'matt Lefleur',
+        'choice3': 'Matt Lefleur',
         'choice4': 'Vince Lombardi',
         
         correctAnswer: 'Curly Lambeau'
     }];
-        //Start of js function for Quiz App-------------------------------------------------------------------------
+        //Start of js functions for Quiz App-------------------------------------------------------------------------
     //Variables to update score and question number    
     let score = 0;
     let questionNumber = 0;
 
     function startQuiz() {
+        
         $('.start').on('click', function(){
-            event.preventDefault();
             updateQuestion();
             console.log('start quiz is working!');
             $('.headline').hide();
-            
-        
+            nextQuestion();
+                              
         })
         
         //this function will listen for a click on the start button
@@ -97,7 +97,6 @@ const QUESTIONS = [
     }
     function updateQuestion() {
        const quizQuestions = `<section class='question'>
-                ${questionNumber += 1}
                 <form>
                 <h2>${QUESTIONS[questionNumber].question}</h2>
                 <label>
@@ -114,20 +113,21 @@ const QUESTIONS = [
                 </label>
                 </form>
        </section>`
-       $('.jsList').append(quizQuestions);
-        console.log(quizQuestions);
+       $('.jsList').on('click').append(quizQuestions);//this is appending right away then on click
+       
         
     }      
-    
-
     function checkAnswer(){
-        //this checks to see if answer is correct
+        
     }
     function nextQuestion() {
+       const forward = `${questionNumber += 1}`;
+       
         //this function listens for a click on the next button if the answer is correct
         //the user is taken to the next question
     }
     function UpdateScore(){
+
         //this function will see if the answer is correct then update
         //the score accordingly
     }
