@@ -100,14 +100,18 @@ const QUESTIONS = [
                 ${questionNumber += 1}
                 <form>
                 <h2>${QUESTIONS[questionNumber].question}</h2>
-                <label for='forRadio1'>
-                <input type='radio' id='forRadio1'>${QUESTIONS[questionNumber].choice1}
-                <label for='forRadio2'>
-                <input type='radio' id='forRadio2'>${QUESTIONS[questionNumber].choice2}
-                <label for='forRadio3'>
-                <input type='radio' id='forRadio3'>${QUESTIONS[questionNumber].choice3}
-                <label for='forRadio4'>
-                <input type='radio' id='forRadio4'>${QUESTIONS[questionNumber].choice4}
+                <label>
+                <input type='radio' name='forRadio1'>${QUESTIONS[questionNumber].choice1}
+                </label>
+                <label>
+                <input type='radio' name='forRadio1'>${QUESTIONS[questionNumber].choice2}
+                </label>
+                <label>
+                <input type='radio' name='forRadio1'>${QUESTIONS[questionNumber].choice3}
+                </label>
+                <label>
+                <input type='radio' name='forRadio1'>${QUESTIONS[questionNumber].choice4}
+                </label>
                 </form>
        </section>`
        $('.jsList').append(quizQuestions);
