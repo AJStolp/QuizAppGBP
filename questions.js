@@ -2,7 +2,7 @@ const QUESTIONS = [
     {
         //Question 1
         question: 'Who did the Packers play in the first Super Bowl?',
-        
+            
             'choice1': 'Oakland',
             'choice2': 'Patriots',
             'choice3': 'Kanas City',
@@ -27,9 +27,9 @@ const QUESTIONS = [
         question: 'How many championships have the Green Bay Packers won?',
         
             'choice1': '10',
-            'choice1': '6',
-            'choice1': '8',
-            'choice1': '13',
+            'choice2': '6',
+            'choice3': '8',
+            'choice4': '13',
     
         correctAnswer: '13'
     },
@@ -84,6 +84,7 @@ const QUESTIONS = [
 
     function startQuiz() {
         $('.start').on('click', function(){
+            event.preventDefault();
             updateQuestion();
             console.log('start quiz is working!');
             $('.headline').hide();
@@ -94,7 +95,17 @@ const QUESTIONS = [
         //then it will take users to the first question
     }
     function updateQuestion() {
-       
+       const quizQuestions = `<section class='question'>
+                ${questionNumber += 1}
+                <form>
+                <h2>${QUESTIONS[questionNumber].question}</h2>
+                <input type='radio'>${QUESTIONS[questionNumber].choice1}
+                <input type='radio'>${QUESTIONS[questionNumber].choice2}
+                <input type='radio'>${QUESTIONS[questionNumber].choice3}
+                <input type='radio'>${QUESTIONS[questionNumber].choice4}
+                </form>
+       </section>`
+        console.log(quizQuestions);
         
     }      
     
