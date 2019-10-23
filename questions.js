@@ -89,7 +89,7 @@ const QUESTIONS = [
             $('.headline').hide();
             nextQuestion();
             $(this).html('<button class="nxt">Next</button>');
-            
+            //UpdateScore();
         })
         
         //this function will listen for a click on the start button
@@ -98,8 +98,8 @@ const QUESTIONS = [
     function updateQuestion() {
        const quizQuestions = `<section class='question'>
                 <form>
-                <h4>${questionNumber}</h4>
-                <h4>${score}</h4>
+                <h4>${questionNumber}<span>/7 - Question Number</span></h4>
+                <h4>${score}<span>/49 - Score</span></h4>
                 <h2>${QUESTIONS[questionNumber].question}</h2>
                 <label>
                 <input type='radio' name='forRadio1' class='rdo' value='0'>${QUESTIONS[questionNumber].choice1}
@@ -114,6 +114,7 @@ const QUESTIONS = [
                 <input type='radio' name='forRadio1' class='rdo' value='0'>${QUESTIONS[questionNumber].choice4}
                 </label>
                 <button type='submit' class='td'>Touchdown?</button>
+                <div id='incorrect'><div>
                 </form>
        </section>`
        $('.jsList').on('click').append(quizQuestions);
@@ -128,6 +129,7 @@ const QUESTIONS = [
                     alert('A horse is a horse of course!');
                     UpdateScore(); 
                 }else{
+                    $('#incorrect').text('Incomplete Pass!')
                     console.log('still working of course');
                 } 
             })
