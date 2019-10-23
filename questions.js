@@ -79,7 +79,7 @@ const QUESTIONS = [
     }];
         //Start of js functions for Quiz App-------------------------------------------------------------------------
     //Variables to update score and question number    
-    let score = 0;
+    let score = 0;//score++ used to count
     let questionNumber = 0;
 
     function startQuiz() {
@@ -89,7 +89,7 @@ const QUESTIONS = [
             console.log('start quiz is working!');
             $('.headline').hide();
             nextQuestion();
-                              
+            //$('.start').hide();//I don't think I want to hide this
         })
         
         //this function will listen for a click on the start button
@@ -111,18 +111,38 @@ const QUESTIONS = [
                 <label>
                 <input type='radio' name='forRadio1'>${QUESTIONS[questionNumber].choice4}
                 </label>
+                <button class='td'>Touchdown?</button>
                 </form>
        </section>`
-       $('.jsList').on('click').append(quizQuestions);//this is appending right away then on click
+       $('.jsList').on('click').append(quizQuestions);
        
         
     }      
     function checkAnswer(){
+        /*for(let i = 0; i < QUESTIONS[questionNumber].choices.length; i++){
+        if(`${QUESTIONS[questionNumber].choice1} === ${QUESTIONS[questionNumber].correctAnswer}`){
+            return true;
+        }
+        if(`${QUESTIONS[questionNumber].choice2} === ${QUESTIONS[questionNumber].correctAnswer}`){
+            return true;
+        }
+        if(`${QUESTIONS[questionNumber].choice3} === ${QUESTIONS[questionNumber].correctAnswer}`){
+            return true;
+        }
+        if(`${QUESTIONS[questionNumber].choice4} === ${QUESTIONS[questionNumber].correctAnswer}`){
+            return true;
+        }
+        else{
+            return false;
+        }
         
-    }
+    }*/
+}
     function nextQuestion() {
-       const forward = `${questionNumber += 1}`;
-       
+       `${questionNumber ++}`;
+       $('.td').on('click', function(){
+           checkAnswer();
+       })
         //this function listens for a click on the next button if the answer is correct
         //the user is taken to the next question
     }
@@ -136,7 +156,7 @@ const QUESTIONS = [
     }
     function callAllFunctions() {
          startQuiz();
-         updateQuestion();
+         //updateQuestion();
          checkAnswer();
          nextQuestion();
          restartQuiz();
