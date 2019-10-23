@@ -5,10 +5,10 @@ const QUESTIONS = [
             
             'choice1': 'Oakland',
             'choice2': 'Patriots',
-            'choice3': 'Kanas City',
+            'choice3': 'Kansas City',
             'choice4': 'Da Bears',
     
-        correctAnswer: 'Kanas City'
+        correctAnswer: 'Kansas City'
     },
 
     {
@@ -79,9 +79,8 @@ const QUESTIONS = [
     }];
         //Start of js functions for Quiz App-------------------------------------------------------------------------
     //Variables to update score and question number    
-    let score = 0;//score++ used to count
+    let score = 0;
     let questionNumber = 0;
-
     function startQuiz() {
         
         $('.start').on('click', function(){
@@ -89,7 +88,8 @@ const QUESTIONS = [
             console.log('start quiz is working!');
             $('.headline').hide();
             nextQuestion();
-            //$('.start').hide();//I don't think I want to hide this
+            $(this).html('<button class="nxt">Next</button>');
+            
         })
         
         //this function will listen for a click on the start button
@@ -98,20 +98,22 @@ const QUESTIONS = [
     function updateQuestion() {
        const quizQuestions = `<section class='question'>
                 <form>
+                <h4>${questionNumber}</h4>
+                <h4>${score}</h4>
                 <h2>${QUESTIONS[questionNumber].question}</h2>
                 <label>
-                <input type='radio' name='forRadio1'>${QUESTIONS[questionNumber].choice1}
+                <input type='radio' name='forRadio1' class='rdo' value='0'>${QUESTIONS[questionNumber].choice1}
                 </label>
                 <label>
-                <input type='radio' name='forRadio1'>${QUESTIONS[questionNumber].choice2}
+                <input type='radio' name='forRadio1' class='rdo' value='0'>${QUESTIONS[questionNumber].choice2}
                 </label>
                 <label>
-                <input type='radio' name='forRadio1'>${QUESTIONS[questionNumber].choice3}
+                <input type='radio' name='forRadio1' class='rdo' value='0'>${QUESTIONS[questionNumber].choice3}
                 </label>
                 <label>
-                <input type='radio' name='forRadio1'>${QUESTIONS[questionNumber].choice4}
+                <input type='radio' name='forRadio1' class='rdo' value='0'>${QUESTIONS[questionNumber].choice4}
                 </label>
-                <button class='td'>Touchdown?</button>
+                <button type='submit' class='td'>Touchdown?</button>
                 </form>
        </section>`
        $('.jsList').on('click').append(quizQuestions);
@@ -119,46 +121,39 @@ const QUESTIONS = [
         
     }      
     function checkAnswer(){
-        /*for(let i = 0; i < QUESTIONS[questionNumber].choices.length; i++){
-        if(`${QUESTIONS[questionNumber].choice1} === ${QUESTIONS[questionNumber].correctAnswer}`){
-            return true;
+            $('.td').on('submit', function(event){
+                event.preventDefault();
+                
+                if($('input[value="0"]').prop('checked') == `${QUESTIONS[questionNumber].correctAnswer}`){
+                    alert('A horse is a horse of course!');
+                    UpdateScore(); 
+                }else{
+                    console.log('still working of course');
+                } 
+            })
+            
         }
-        if(`${QUESTIONS[questionNumber].choice2} === ${QUESTIONS[questionNumber].correctAnswer}`){
-            return true;
-        }
-        if(`${QUESTIONS[questionNumber].choice3} === ${QUESTIONS[questionNumber].correctAnswer}`){
-            return true;
-        }
-        if(`${QUESTIONS[questionNumber].choice4} === ${QUESTIONS[questionNumber].correctAnswer}`){
-            return true;
-        }
-        else{
-            return false;
-        }
-        
-    }*/
-}
+           
+
+
     function nextQuestion() {
        `${questionNumber ++}`;
-       $('.td').on('click', function(){
-           checkAnswer();
-       })
+       
         //this function listens for a click on the next button if the answer is correct
         //the user is taken to the next question
     }
-    function UpdateScore(){
 
+    function UpdateScore(){
+        let tdScore = `${score += 7}`;
+        
+        console.log(tdScore);
+        
         //this function will see if the answer is correct then update
         //the score accordingly
     }
+
     function restartQuiz() {
         //this function takes user to the beginning
     }
-    function callAllFunctions() {
-         startQuiz();
-         //updateQuestion();
-         checkAnswer();
-         nextQuestion();
-         restartQuiz();
-    }
-    $(callAllFunctions());
+
+    $(startQuiz);
