@@ -113,27 +113,28 @@ const QUESTIONS = [
                 <label>
                 <input type='radio' name='forRadio1' class='rdo' value='0'>${QUESTIONS[questionNumber].choice4}
                 </label>
-                <button type='submit' class='td'>Touchdown?</button>
+                <section class='tdScoresForDays'>
                 <div id='incorrect'><div>
+                </section>
                 </form>
        </section>`
        $('.jsList').on('click').append(quizQuestions);
-       
+       $('.jsList').append(`<button type='submit' id='td'>Touchdown?</button>`);
         
     }      
     function checkAnswer(){
-            $('.td').on('submit', function(event){
+            $('#td').on('click', function(){
                 event.preventDefault();
-                
+                console.log('working?');
                 if($('input[value="0"]').prop('checked') == `${QUESTIONS[questionNumber].correctAnswer}`){
                     alert('A horse is a horse of course!');
                     UpdateScore(); 
                 }else{
-                    $('#incorrect').text('Incomplete Pass!')
+                    $('#incorrect').text('<p>Incomplete Pass!</p>')
                     console.log('still working of course');
                 } 
             })
-            
+           
         }
            
 
