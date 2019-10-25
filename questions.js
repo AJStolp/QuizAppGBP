@@ -102,41 +102,51 @@ const QUESTIONS = [
                 <h4>${score}<span>/49 - Score</span></h4>
                 <h2>${QUESTIONS[questionNumber].question}</h2>
                 <label>
-                <input type='radio' name='forRadio1' class='rdo' value='0'>${QUESTIONS[questionNumber].choice1}
+                <input type='radio' name='forRadio1' class='rdo'>${QUESTIONS[questionNumber].choice1}
                 </label>
                 <label>
-                <input type='radio' name='forRadio1' class='rdo' value='0'>${QUESTIONS[questionNumber].choice2}
+                <input type='radio' name='forRadio1' class='rdo'>${QUESTIONS[questionNumber].choice2}
                 </label>
                 <label>
-                <input type='radio' name='forRadio1' class='rdo' value='0'>${QUESTIONS[questionNumber].choice3}
+                <input type='radio' name='forRadio1' class='rdo'>${QUESTIONS[questionNumber].choice3}
                 </label>
                 <label>
-                <input type='radio' name='forRadio1' class='rdo' value='0'>${QUESTIONS[questionNumber].choice4}
+                <input type='radio' name='forRadio1' class='rdo'>${QUESTIONS[questionNumber].choice4}
                 </label>
                 <section class='tdScoresForDays'>
                 <div id='incorrect'><div>
                 </section>
+                <button type='submit' id='td'>Touchdown?</button>
                 </form>
        </section>`
        $('.jsList').on('click').append(quizQuestions);
-       $('.jsList').append(`<button type='submit' id='td'>Touchdown?</button>`);
+       $('.jsList').on('click', '#td', function(e){
+           e.preventDefault();
+           checkAnswer();
+       })
         
     }      
     function checkAnswer(){
-            $('#td').on('click', function(){
+            /*$('#td').on('click', function(){
                 event.preventDefault();
                 console.log('working?');
                 if($('input[value="0"]').prop('checked') == `${QUESTIONS[questionNumber].correctAnswer}`){
                     alert('A horse is a horse of course!');
                     UpdateScore(); 
                 }else{
-                    $('#incorrect').text('<p>Incomplete Pass!</p>')
+                    $('#incorrect').text('Incomplete Pass!')
                     console.log('still working of course');
                 } 
-            })
-           
+            })*/
+            let values = $('input[name="forRadio1"]:checked').val();
+            if(values == `${QUESTIONS[questionNumber].correctAnswer}`){
+                alert('A horse is a horse of course!');
+                UpdateScore(); 
+            }else{
+                $('#incorrect').text('Incomplete Pass!')
+                console.log('still working of course');
         }
-           
+    }
 
 
     function nextQuestion() {
