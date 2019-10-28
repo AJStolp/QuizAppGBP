@@ -85,11 +85,15 @@ const QUESTIONS = [
         
         $('.start').on('click', function(){
             updateQuestion();
-            console.log('start quiz is working!');
             $('.headline').hide();
             nextQuestion();
             $(this).html('<button class="nxt">Next</button>');
             //UpdateScore();
+            $(this).on('click', function(e){
+                e.preventDefault;
+                $('.formz').children().empty();
+                console.log('working working working');
+            });
         })
         //this function will listen for a click on the start button
         //then it will take users to the first question
@@ -124,7 +128,6 @@ const QUESTIONS = [
            checkAnswer()
            $(this).hide();
        })
-        
     }      
     function checkAnswer(){
             let values = $('input[name="forRadio1"]:checked').val();
