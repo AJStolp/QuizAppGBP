@@ -102,16 +102,16 @@ const QUESTIONS = [
                 <h4>${score}<span>/49 - Score</span></h4>
                 <h2>${QUESTIONS[questionNumber].question}</h2>
                 <label>
-                <input type='radio' name='forRadio1' class='rdo'>${QUESTIONS[questionNumber].choice1}
+                <input type='radio' id='r1' name='forRadio1' class='rdo'>${QUESTIONS[questionNumber].choice1}
                 </label>
                 <label>
-                <input type='radio' name='forRadio1' class='rdo'>${QUESTIONS[questionNumber].choice2}
+                <input type='radio' id='r2' name='forRadio1' class='rdo'>${QUESTIONS[questionNumber].choice2}
                 </label>
                 <label>
-                <input type='radio' name='forRadio1' class='rdo'>${QUESTIONS[questionNumber].choice3}
+                <input type='radio' id='r3' name='forRadio1' class='rdo'>${QUESTIONS[questionNumber].choice3}
                 </label>
                 <label>
-                <input type='radio' name='forRadio1' class='rdo'>${QUESTIONS[questionNumber].choice4}
+                <input type='radio' id='r4' name='forRadio1' class='rdo'>${QUESTIONS[questionNumber].choice4}
                 </label>
                 <section class='tdScoresForDays'>
                 <div id='incorrect'><div>
