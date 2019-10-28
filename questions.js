@@ -121,31 +121,19 @@ const QUESTIONS = [
        $('.jsList').on('click').append(quizQuestions);
        $('.jsList').on('click', '#td', function(e){
            e.preventDefault();
-           checkAnswer();
+           checkAnswer()
+           $(this).hide();
        })
         
     }      
     function checkAnswer(){
-            /*$('#td').on('click', function(){
-                event.preventDefault();
-                console.log('working?');
-                if($('input[value="0"]').prop('checked') == `${QUESTIONS[questionNumber].correctAnswer}`){
-                    alert('A horse is a horse of course!');
-                    UpdateScore(); 
-                }else{
-                    $('#incorrect').text('Incomplete Pass!')
-                    console.log('still working of course');
-                } 
-            })*/
             let values = $('input[name="forRadio1"]:checked').val();
-            if(values == `${QUESTIONS[questionNumber - 1].correctAnswer}`){
-                alert('A horse is a horse of course!');
+            if(values == `${QUESTIONS[questionNumber -1].correctAnswer}`){
+                $('#incorrect').text('The Crowd Go\'s Wild!');
                 UpdateScore(); 
             }else{
                 $('#incorrect').text('Incomplete Pass!')
-                console.log('still working of course');
         }
-        return values
     }
 
 
@@ -164,11 +152,6 @@ const QUESTIONS = [
         //this function will see if the answer is correct then update
         //the score accordingly
     }
-    /*function hideLastQuestion(){
-        $('.formz').on('click', '.nxt', function(){
-
-        })
-    }*/
 
     function restartQuiz() {
         //this function takes user to the beginning
