@@ -91,27 +91,26 @@ const QUESTIONS = [
             $(this).html('<button class="nxt">Next</button>');
             //UpdateScore();
         })
-        
         //this function will listen for a click on the start button
         //then it will take users to the first question
     }
     function updateQuestion() {
        const quizQuestions = `<section class='question'>
-                <form>
+                <form class='formz'>
                 <h4>${questionNumber}<span>/7 - Question Number</span></h4>
                 <h4>${score}<span>/49 - Score</span></h4>
                 <h2>${QUESTIONS[questionNumber].question}</h2>
                 <label>
-                <input type='radio' id='r1' name='forRadio1' class='rdo'>${QUESTIONS[questionNumber].choice1}
+                <input type='radio' id='r1' name='forRadio1' class='rdo' value='${QUESTIONS[questionNumber].choice1}'>${QUESTIONS[questionNumber].choice1}
                 </label>
                 <label>
-                <input type='radio' id='r2' name='forRadio1' class='rdo'>${QUESTIONS[questionNumber].choice2}
+                <input type='radio' id='r2' name='forRadio1' class='rdo' value='${QUESTIONS[questionNumber].choice2}'>${QUESTIONS[questionNumber].choice2}
                 </label>
                 <label>
-                <input type='radio' id='r3' name='forRadio1' class='rdo'>${QUESTIONS[questionNumber].choice3}
+                <input type='radio' id='r3' name='forRadio1' class='rdo' value='${QUESTIONS[questionNumber].choice3}'>${QUESTIONS[questionNumber].choice3}
                 </label>
                 <label>
-                <input type='radio' id='r4' name='forRadio1' class='rdo'>${QUESTIONS[questionNumber].choice4}
+                <input type='radio' id='r4' name='forRadio1' class='rdo' value='${QUESTIONS[questionNumber].choice4}'>${QUESTIONS[questionNumber].choice4}
                 </label>
                 <section class='tdScoresForDays'>
                 <div id='incorrect'><div>
@@ -139,19 +138,20 @@ const QUESTIONS = [
                 } 
             })*/
             let values = $('input[name="forRadio1"]:checked').val();
-            if(values == `${QUESTIONS[questionNumber].correctAnswer}`){
+            if(values == `${QUESTIONS[questionNumber - 1].correctAnswer}`){
                 alert('A horse is a horse of course!');
                 UpdateScore(); 
             }else{
                 $('#incorrect').text('Incomplete Pass!')
                 console.log('still working of course');
         }
+        return values
     }
 
 
     function nextQuestion() {
        `${questionNumber ++}`;
-       
+        
         //this function listens for a click on the next button if the answer is correct
         //the user is taken to the next question
     }
@@ -164,6 +164,11 @@ const QUESTIONS = [
         //this function will see if the answer is correct then update
         //the score accordingly
     }
+    /*function hideLastQuestion(){
+        $('.formz').on('click', '.nxt', function(){
+
+        })
+    }*/
 
     function restartQuiz() {
         //this function takes user to the beginning
