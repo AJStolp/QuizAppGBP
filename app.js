@@ -27,7 +27,7 @@ function loadStart() {
     <article class="panel">
         <section class="inner">
             <h1>FOOTBALL QUIZ</h1>
-            <button>Let's Go!</button>
+            <button class='nxt'>Let's Go!</button>
         </section>
     </article>`)
     console.log('first part is working')
@@ -53,6 +53,7 @@ function loadNextQuestion() {
             </form>
         </section>
         <footer>${currentQuestionIndex + 1} of 7</footer>
+        console.log('second part is working')
     </article>`)
 
     updateCorrectIncorrect()
@@ -96,15 +97,15 @@ function createQuestionsHTML(){
 }
 
 //checkAnswersValid 
-
 function checkAnswersValid(){
     let values = $('input[name="answer"]:checked').val();
             if(values == `${QUESTIONS[currentQuestionIndex].answers}`){
-                $('#incorrect').text('The Crowd Go\'s Wild!');
+                $('#incorrect').text('The Crowd Go\'s Wild!')
             }else{
                 $('#incorrect').text('Incomplete Pass!')
     }
 }
+
 //updateForm
 
 //updateCorrectIncorrect
@@ -112,11 +113,12 @@ function checkAnswersValid(){
 //loadButtonListener 
 
 function loadButtonListener(){
-    $('.inner').on('click', 'button', function(e){
-        e.preventDefault();
-        console.log('working?!')
-        loadStart();
-        //loadNextQuestion()
+    
+    $('.nxt').on('click',function(e){
+        e.preventDefault()
+        console.log('working?!');
+        loadNextQuestion()
+        console.log('working?!');
     })
 }
 
@@ -124,3 +126,5 @@ $(() => {
     //loadButtonListener()
     loadStart()
 });
+$(loadButtonListener())
+
