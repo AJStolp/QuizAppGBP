@@ -31,7 +31,7 @@ function loadStart() {
         </section>
     </article>`)
     console.log('first part is working')
-}
+} 
 
 function loadNextQuestion() {
     currentState = STATES.QUESTION
@@ -48,15 +48,13 @@ function loadNextQuestion() {
             <h1>${currentQuestionIndex + 1}. ${QUESTIONS[currentQuestionIndex].question}</h1>
             <form id="quiz">
                 ${questionsHTML}
-                <button type="submit">Submit</button>
+                <button type="submit" class='another'>Submit</button>
                 <div id='incorrect'></div>
             </form>
         </section>
         <footer>${currentQuestionIndex + 1} of 7</footer>
-        console.log('second part is working')
     </article>`)
-
-    updateCorrectIncorrect()
+    //updateCorrectIncorrect()
     console.log('second part is working');
 }
 
@@ -101,6 +99,7 @@ function checkAnswersValid(){
     let values = $('input[name="answer"]:checked').val();
             if(values == `${QUESTIONS[currentQuestionIndex].answers}`){
                 $('#incorrect').text('The Crowd Go\'s Wild!')
+                console.log('the possibilities');
             }else{
                 $('#incorrect').text('Incomplete Pass!')
     }
@@ -114,17 +113,20 @@ function checkAnswersValid(){
 
 function loadButtonListener(){
     
-    $('.nxt').on('click',function(e){
+    $('#start').on('click',function(e){
         e.preventDefault()
-        console.log('working?!');
         loadNextQuestion()
-        console.log('working?!');
+    })
+    $('.another').on('click', function(e){
+        e.preventDefault()
+        loadNextQuestion()
+        checkAnswersValid()
     })
 }
 
-$(() => {
-    //loadButtonListener()
+$(function pageLoad(){
     loadStart()
-});
-$(loadButtonListener())
+    loadButtonListener()
+})
+
 
