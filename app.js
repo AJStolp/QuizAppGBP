@@ -20,7 +20,7 @@ function loadStart() {
     currentQuestionIndex = 0
 
     // set id on main element to state
-    $('main').attr('id', currentState)
+    $('main').attr('id', currentState);
 
     // update inner HTML in <main>
     $('main').html(`
@@ -30,16 +30,16 @@ function loadStart() {
             <button class='nxt'>Let's Go!</button>
         </section>
     </article>`)
-    console.log('first part is working')
+    console.log('first part is working');
 } 
 
 function loadNextQuestion() {
     currentState = STATES.QUESTION
-    $('main').attr('id', currentState)
-    $('form').removeClass()
-    $('button').html(`Submit`)
+    $('main').attr('id', currentState);
+    $('form').removeClass();
+    $('button').html(`Submit`);
 
-    let questionsHTML = createQuestionsHTML()
+    let questionsHTML = createQuestionsHTML();
 
     // update inner HTML in <main>
     $('main').html(`
@@ -60,8 +60,8 @@ function loadNextQuestion() {
 
 function loadEnd(){
     currentState = STATE.END
-    $('main').attr('id', currentState)
-    $('button').html(`Re-take!`)
+    $('main').attr('id', currentState);
+    $('button').html(`Re-take!`);
 
     let message = 
         numCorrect / QUESTIONS.length >= 0.7
@@ -79,17 +79,18 @@ function loadEnd(){
     </article>`)
 
     //remove counter from incorrect and correct
-    $('footer.footer').remove()
+    $('footer.footer').remove();
 }
 
 function createQuestionsHTML(){
     return QUESTIONS[currentQuestionIndex].answers
         .map((question, index) =>{
             return `
-                <div class='answer'>
-                    <input type='radio' name='answer' value='${index}' id='option${index}' class=''/>
-                    <label for='option${index}'>${question.text}</label>
-                </div>`
+                
+                        <input type='radio' name='answer' value='${index}' id='option${index}' class='wordz' />
+                        <label for='option${index}'>${question.text}</label>
+               
+                `
         })
         .join('\n')
 }
@@ -110,23 +111,30 @@ function checkAnswersValid(){
 //updateCorrectIncorrect
 
 //loadButtonListener 
-
 function loadButtonListener(){
     
     $('#start').on('click',function(e){
-        e.preventDefault()
-        loadNextQuestion()
+        e.preventDefault();
+        loadNextQuestion();
     })
-    $('.another').on('click', function(e){
-        e.preventDefault()
-        loadNextQuestion()
-        checkAnswersValid()
+    $('.answer').on('click', '.wordz', function(e){
+        console.log('.....');
     })
+    //$("input[name=answer][value='${index}']").prop("checked", "true");
+    // $("[name='answer']").click(function(){
+    //     $("[name='answer']").removeAttr("checked");
+    //     $(this).attr({"checked":true}).prop({"checked":true});
+    //   });
+    //$('input:radio[name=answer]:checked').val();
+    // $('.answer').on('click', '', function(e){
+    //     (this).prop('checked').val();
+
+    // })
+    //$('.answers').append('${question.text}')
+    
 }
 
 $(function pageLoad(){
     loadStart()
     loadButtonListener()
 })
-
-
