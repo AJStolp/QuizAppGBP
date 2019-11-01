@@ -40,7 +40,7 @@ function loadNextQuestion() {
     $('button').html(`Submit`);
 
     let questionsHTML = createQuestionsHTML();
-
+    
     // update inner HTML in <main>
     $('main').html(`
     <article class="panel">
@@ -54,12 +54,12 @@ function loadNextQuestion() {
         </section>
         <footer>${currentQuestionIndex + 1} of 7</footer>
     </article>`)
-    //updateCorrectIncorrect()
+    updateCorrectIncorrect()
     console.log('second part is working');
 }
 
 function loadEnd(){
-    currentState = STATE.END
+    currentState = STATES.END
     $('main').attr('id', currentState);
     $('button').html(`Re-take!`);
 
@@ -86,55 +86,114 @@ function createQuestionsHTML(){
     return QUESTIONS[currentQuestionIndex].answers
         .map((question, index) =>{
             return `
-                
-                        <input type='radio' name='answer' value='${index}' id='option${index}' class='wordz' />
+                <div class='answer'>
+                        <input type='radio' name='answer' value='${index}' id='option${index}' class='' />
                         <label for='option${index}'>${question.text}</label>
                
-                `
+               </div> `
         })
         .join('\n')
 }
 
 //checkAnswersValid 
-function checkAnswersValid(){
-    let values = $('input[name="answer"]:checked').val();
-            if(values == `${QUESTIONS[currentQuestionIndex].answers}`){
-                $('#incorrect').text('The Crowd Go\'s Wild!')
-                console.log('the possibilities');
-            }else{
-                $('#incorrect').text('Incomplete Pass!')
+function checkAnswerValid() {
+    let answerIndex = $('input[name=answer]:checked').val()
+    let answerNotSelected = !answerIndex
+
+    if (answerNotSelected) {
+        alert('You must select an option.')
+    } else {
+        let answer =
+            QUESTIONS[currentQuestionIndex].answers[
+                Number($('input[name=answer]:checked').val())
+            ]
+
+        updateForm({ answer, answerIndex })
+
+        // increment correct / incorrect count
+        answer.correct ? numCorrect++ : numIncorrect++
+        updateCorrectIncorrect()
     }
 }
 
 //updateForm
+// updates the question form with validation messages / classes
+function updateForm({ answer, answerIndex }) {
+    currentState = answer.correct ? STATES.CORRECT : STATES.INCORRECT
+    // add correct/incorrect (stat) class to the form
+    $('form').addClass(currentState)
+    // disable all radios
+    $('input[type=radio]').prop('disabled', true)
+
+    if (answer.correct) {
+        // add class, success message, and icon to correct answer
+        $('.answer')
+            .eq(answerIndex)
+            .addClass('correct')
+            .append(
+                `<p>Touchdown! Nice job!</p>`
+            )
+    } else {
+        let correctAnswerIndex = QUESTIONS[currentQuestionIndex].answers.findIndex(
+            answer => answer.correct
+        )
+        // add class, error, and icon to incorrect answer
+        $('.answer')
+            .eq(answerIndex)
+            .addClass('incorrect')
+            .append(
+                `<p>Sorry, that's wrong, correct answer was ${QUESTIONS[currentQuestionIndex].answers[correctAnswerIndex].text}`
+            )
+
+        // add class to correct answer
+        $('.answer')
+            .eq(correctAnswerIndex)
+            .addClass('correct')
+    }
+
+    // update button text
+    $('button').html(`Next &raquo;`)
+}
 
 //updateCorrectIncorrect
+function updateCorrectIncorrect(){
+    if($('footer.footer').length){
+        $('footer.footer').html(`${numCorrect} correct / ${numIncorrect} incorrect`)
+    } else {
+        $('body').append(
+            `<footer class='footer'>${numCorrect} correct / ${numIncorrect} incorrect</footer>`
+        )
+    }
+}
 
-//loadButtonListener 
-function loadButtonListener(){
-    
-    $('#start').on('click',function(e){
-        e.preventDefault();
-        loadNextQuestion();
-    })
-    $('.answer').on('click', '.wordz', function(e){
-        console.log('.....');
-    })
-    //$("input[name=answer][value='${index}']").prop("checked", "true");
-    // $("[name='answer']").click(function(){
-    //     $("[name='answer']").removeAttr("checked");
-    //     $(this).attr({"checked":true}).prop({"checked":true});
-    //   });
-    //$('input:radio[name=answer]:checked').val();
-    // $('.answer').on('click', '', function(e){
-    //     (this).prop('checked').val();
+// listen for button clicks
+// behavior changes based on the current state
+function loadButtonListener() {
+    $('main').on('click', 'button', function(event) {
+        event.preventDefault()
 
-    // })
-    //$('.answers').append('${question.text}')
-    
+        switch (currentState) {
+            case STATES.START:
+                loadNextQuestion()
+                break
+            case STATES.QUESTION:
+                checkAnswerValid()
+                break
+            case STATES.CORRECT:
+            case STATES.INCORRECT:
+                currentQuestionIndex++
+                currentQuestionIndex >= QUESTIONS.length
+                    ? loadEnd()
+                    : loadNextQuestion()
+                break
+            case STATES.END:
+                loadStart()
+                break
+        }
+    })
 }
 
 $(function pageLoad(){
-    loadStart()
     loadButtonListener()
+    loadStart()
 })

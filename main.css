@@ -1,3 +1,35 @@
 /*.questionUpdate {
     border: 1px solid black;
 }*/
+main {
+    border: 1px solid black;
+    padding: 25px;
+    text-align: center;
+}
+button {
+    border: 1px solid yellow;
+    border-radius: 5px;
+    color: green;
+    font-family: Helvetica, sans-serif;
+    font-size: 18px;
+    margin: 35px 25px;
+    padding: 15px 25px;
+}
+button:hover {
+    background: green;
+    color: yellow;
+}
+h1 {
+    font-family: Helvetica, sans-serif;
+    font-size: 28px;
+    padding: 20px;
+}
+.answer {
+    font-family: Helvetica, sans-serif;
+    font-size: 18px;
+    padding: 5px;
+}
+.footer{
+    padding: 15px;
+    text-align: center;
+}
