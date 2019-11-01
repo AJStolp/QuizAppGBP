@@ -26,7 +26,7 @@ function loadStart() {
     $('main').html(`
     <article class="panel">
         <section class="inner">
-            <h1>FOOTBALL QUIZ</h1>
+            <h1><span class='packer'>Green Bay Packer</span> <span class='fbquiz'>FOOTBALL QUIZ</span></h1>
             <button class='nxt'>Let's Go!</button>
         </section>
     </article>`)
@@ -36,7 +36,7 @@ function loadStart() {
 function loadNextQuestion() {
     currentState = STATES.QUESTION
     $('main').attr('id', currentState);
-    $('form').removeClass();
+    // $('form').removeClass();
     $('button').html(`Submit`);
 
     let questionsHTML = createQuestionsHTML();
@@ -48,7 +48,7 @@ function loadNextQuestion() {
             <h1>${currentQuestionIndex + 1}. ${QUESTIONS[currentQuestionIndex].question}</h1>
             <form id="quiz">
                 ${questionsHTML}
-                <button type="submit" class='another'>Submit</button>
+                <button type="submit" class='another'>Touchdown?</button>
                 <div id='incorrect'></div>
             </form>
         </section>
@@ -131,7 +131,7 @@ function updateForm({ answer, answerIndex }) {
             .eq(answerIndex)
             .addClass('correct')
             .append(
-                `<p>Touchdown! Nice job!</p>`
+                `<p class='right'>Touchdown! Nice job!</p>`
             )
     } else {
         let correctAnswerIndex = QUESTIONS[currentQuestionIndex].answers.findIndex(
@@ -139,10 +139,11 @@ function updateForm({ answer, answerIndex }) {
         )
         // add class, error, and icon to incorrect answer
         $('.answer')
+            
             .eq(answerIndex)
             .addClass('incorrect')
             .append(
-                `<p>Sorry, that's wrong, correct answer was ${QUESTIONS[currentQuestionIndex].answers[correctAnswerIndex].text}`
+                `<p class='wrong'>Sorry, that's wrong, correct answer was ${QUESTIONS[currentQuestionIndex].answers[correctAnswerIndex].text}`
             )
 
         // add class to correct answer
@@ -161,7 +162,7 @@ function updateCorrectIncorrect(){
         $('footer.footer').html(`${numCorrect} correct / ${numIncorrect} incorrect`)
     } else {
         $('body').append(
-            `<footer class='footer'>${numCorrect} correct / ${numIncorrect} incorrect</footer>`
+            `<footer class='footer'>${numCorrect} correct ${numIncorrect} incorrect</footer>`
         )
     }
 }
