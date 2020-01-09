@@ -1,5 +1,5 @@
 # QuizAppGBP
-This is my first quiz app.Hopefully you enjoy it!
+This is my first quiz app. Hopefully you enjoy it!
 
 <img src='https://github.com/AJStolp/Gist-Photos/blob/master/QuizAPPFinal.png' alt='cover image of quiz'>
 
